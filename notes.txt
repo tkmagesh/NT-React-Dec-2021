@@ -64,4 +64,5 @@ Assumptions:
     1. 100% functionally correct
     2. preparing the code for deployment is taken care by another team
 
-    
+
+Reactive (Dumb) X Proactive (Knowledge)
