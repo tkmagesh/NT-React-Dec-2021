@@ -66,3 +66,5 @@ Assumptions:
 
 
 Reactive (Dumb) X Proactive (Knowledge)
+
+Incremental approach Vs All in One approach
