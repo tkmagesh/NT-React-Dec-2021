@@ -68,3 +68,14 @@ Assumptions:
 Reactive (Dumb) X Proactive (Knowledge)
 
 Incremental approach Vs All in One approach
+
+HTML & JSX
+    HTML
+        1. Open tags without correstponding close tags are allowed
+        2. 'for' attribute is allowed
+        3. 'class' attribute is allowed
+
+    JSX
+        1. Every open tag must have the correstponding close tag
+        2. Use 'htmlFor' in place of 'for' attribute
+        3. Use 'className' in place of 'class' attribute
