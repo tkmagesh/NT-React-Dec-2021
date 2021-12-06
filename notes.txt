@@ -31,10 +31,10 @@ Subtle art of not giving a fuck
 Everything is fucked
 
 Topics:
-    1. What is the problem that react is trying to solve?
-    2. React
-    3. VDOM
-    4. JSX
+    (done) 1. What is the problem that react is trying to solve?
+    (done) 2. React
+    (done) 3. VDOM
+    (done) 4. JSX
     5. ES6
     6. Components
     7. App development using Components
