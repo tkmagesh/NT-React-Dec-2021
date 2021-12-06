@@ -59,3 +59,9 @@ What are we trying to accomplish with React?
 
 Salary Calculator
     Basic + HRA + DA - Tax
+
+Assumptions:
+    1. 100% functionally correct
+    2. preparing the code for deployment is taken care by another team
+
+    
