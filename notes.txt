@@ -1,0 +1,61 @@
+Develop Intelligence
+
+Schedule:
+    Commence    : 9:00 AM
+    Tea Break   : 11:00 AM (20 mins)
+    Lunch Break : 1:00 PM (1 Hr)
+    Tea Break   : 3:30 PM (20 mins)
+    Wind up     : 5:00 PM
+
+Methology:
+    Handson Driven
+    No Powerpoints
+
+Expectations:
+    Interactive
+    Try to complete the assignments
+    At least 50% of the participants should complete the assignments
+    Ready to share your solutions
+
+About You:
+    Name
+    Total Experience
+    Primary Skillset
+    Experiance in React (if any)
+    Any interesting books you read / shows you watched recently
+
+
+More money than God
+Too big to fail
+Subtle art of not giving a fuck
+Everything is fucked
+
+Topics:
+    1. What is the problem that react is trying to solve?
+    2. React
+    3. VDOM
+    4. JSX
+    5. ES6
+    6. Components
+    7. App development using Components
+    8. Need for state management
+    9. Build our own state manager
+    10. Redux
+    11. Async Programming in JavaScript
+    12. Redux-Saga
+    13. Routing
+    14. Packaging & Deployment
+
+https://github.com/tkmagesh/nt-react-dec-2021
+
+Software Requirements:
+    1. Chrome Browser
+    2. Visual Studio Code (OR any editor)
+    3. Node.js (LTS)
+
+
+What are we trying to accomplish with React?
+    RIA (Rich Internet Application)
+
+Salary Calculator
+    Basic + HRA + DA - Tax
