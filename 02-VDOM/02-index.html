@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VDOM-2</title>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"> </script>
+    <script>
+        function onBtnRenderClick(){
+            var appEle = React.createElement('div', null, 
+                React.createElement('h1', null, 'React.js'),
+                React.createElement('hr'),
+                React.createElement('section', null, 
+                    React.createElement('h3', null, 'Introduction'),
+                    React.createElement('p', null, 'Excepteur aliqua ad nulla cupidatat cillum irure nulla id exercitation fugiat eu occaecat. Incididunt ex exercitation nulla exercitation irure voluptate mollit sint Lorem consequat velit nulla. Laboris anim duis ea nisi. Ipsum adipisicing occaecat minim do aliquip officia deserunt incididunt est Lorem magna enim. Consequat Lorem do cupidatat pariatur culpa. Duis dolore minim eu officia ad consectetur cillum duis culpa occaecat consectetur. Et ex non velit Lorem.Reprehenderit sunt velit laborum tempor consequat commodo ipsum do Lorem eu consectetur occaecat. Laborum laborum labore occaecat proident nisi nostrud excepteur consequat aliqua. Anim sit consequat reprehenderit sint. Adipisicing esse velit commodo fugiat culpa consequat minim incididunt dolore. Elit ea eu dolor ad dolore ut culpa tempor. Adipisicing laborum labore et veniam eiusmod. Aliquip ullamco sit ea qui aute non commodo Lorem consectetur sit id mollit.'),
+                    React.createElement('p', null, 'Elit veniam non elit sunt amet id laborum. Veniam qui qui qui laborum nisi sit dolor mollit nostrud. Dolore qui ea nisi dolor esse.Velit in eiusmod amet fugiat dolor proident voluptate eiusmod eiusmod sunt excepteur amet occaecat. Duis excepteur enim magna est amet ut. Minim tempor nostrud culpa ea exercitation dolor est eiusmod incididunt occaecat.'),
+                    React.createElement('p', null, 'Id sit pariatur nostrud deserunt sint adipisicing ad. Dolor reprehenderit sit veniam non esse quis magna incididunt. Veniam incididunt cillum eiusmod sit sint dolor esse dolor commodo ut amet. Ullamco officia veniam ullamco anim eiusmod. Velit amet commodo labore nisi. Amet ipsum do aute amet excepteur tempor et ea cillum non eu cupidatat esse.Cillum occaecat et veniam consectetur. Cillum qui laborum cupidatat pariatur culpa duis fugiat excepteur. Reprehenderit dolore est reprehenderit sint nisi veniam eiusmod laboris nostrud incididunt non elit velit exercitation. Amet do sit esse aute commodo Lorem quis.'),
+                ),
+                React.createElement('section', null, 
+                    React.createElement('h3', null, 'Advantages'),
+                    React.createElement('ol', null, 
+                        React.createElement('li', null, 'Efficient'),
+                        React.createElement('li', null, 'Declarative')
+                    )
+                )
+            );
+
+            ReactDOM.render(appEle, document.getElementById('root'));
+        }
+        function init(){
+            var btnRender = document.getElementById('btnRender');
+            btnRender.addEventListener('click', onBtnRenderClick);
+        }
+        window.addEventListener('load', init);
+
+    </script>
+</head>
+<body>
+    <button id="btnRender">Render</button>
+    <div id="root"></div>
+</body>
+</html>
