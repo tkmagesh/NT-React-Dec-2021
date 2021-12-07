@@ -18,21 +18,31 @@
     </style>
     <script type="text/babel">
         class Products  extends React.Component {
+            state = {
+                productNames : [],
+                newProductName : ''
+            };
+
+            onBtnAddNewClick = () => {
+                const { productNames, newProductName } = this.state;
+                this.setState({ 
+                    productNames : [...productNames, newProductName],
+                    newProductName : ''
+                });
+            }
+
+            onBtnRemoveClick = (productName) => {
+                const { productNames } = this.state,
+                    updatedProductNames = productNames.filter(pn => pn !== productName);
+                this.setState({productNames : updatedProductNames})
+            }
             render(){
-                const productNames = [];
-                /* 
-                const productItems = [];
-                for (let idx=0; idx<productNames.length; idx++){
-                    var productName = productNames[idx],
-                        productItem = (<li key={idx}>{productName}</li>)
-                    productItems.push(productItem);
-                } 
-                */
+                const { productNames, newProductName } = this.state;
                 const productItems = productNames.map((productName, idx) => (
                     <li key={idx}>
                         <div>
                             <span>{productName}</span>
-                            <span> <button> X </button> </span>
+                            <span> <button onClick={ () => this.onBtnRemoveClick(productName) }> X </button> </span>
                         </div>
                     </li>
                 ))
@@ -41,8 +51,10 @@
                         <h1>Products</h1>
                         <hr/>
                         <label>Product Name : </label>
-                        <input type="text"/>
-                        <button>Add New</button>
+                        <input type="text"
+                            value={newProductName}
+                             onChange={ evt => this.setState({ newProductName : evt.target.value })}/>
+                        <button onClick={this.onBtnAddNewClick}>Add New</button>
                         <ul>
                             {productItems}
                         </ul>
