@@ -35,7 +35,7 @@ Topics:
     (done) 2. React
     (done) 3. VDOM
     (done) 4. JSX
-    5. ES6
+    (done) 5. ES6
     6. Components
     7. App development using Components
     8. Need for state management
@@ -169,3 +169,20 @@ Assignment
         - reduce
         - filter
         - forEach
+
+Component
+    encapsulation of Presentation + UI Behavior + State
+    reusablility
+    modularity
+    maintainability
+    Composability
+
+    Toolbar
+        Toolbar icons
+    Workspace
+        Tabs
+            Tab Header
+            Tab Body
+
+    Class component
+    Functional component
