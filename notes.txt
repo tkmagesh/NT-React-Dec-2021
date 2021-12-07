@@ -94,6 +94,7 @@ ES6 (ECMAScript6 / ES2015 / ESNext)
     10. arrow functions
     11. template strings
     12. iterators
+    13. generators
 
 
 Custom Iterator
@@ -109,7 +110,14 @@ Custom Iterator
         }
     }
 
-
+Generator Functions
+    function *genNos(){
+        yield 2;
+        yield 4;
+        yield 6;
+        yield 8;
+        return 10;
+    }
 
 Assignment
     Array Methods
