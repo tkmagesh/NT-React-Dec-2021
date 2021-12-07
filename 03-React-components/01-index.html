@@ -18,17 +18,22 @@
         class Greeter extends React.Component{
             //state
             state = {
-                message : '[Default greet message]'
+                message : '[Default greet message]',
+                userName : ''
             };
 
             //behavior
             onBtnGreetClick = () => {
                 this.setState({
-                    message : '[A new greet message]'
+                    message : `Hi ${this.state.userName}, Have a nice day!`
                 }, () => console.log(this.state.message));
                 
-                console.log('greet button clicked');
+                //Display 'Hi <username>, Have a nice day!'
             };
+
+            onTxtUserNameChange = (evt) => {
+                this.setState({ userName : evt.target.value })
+            }
 
             //presentation
             render(){
@@ -38,7 +43,7 @@
                         <h1>Greeter</h1>
                         <hr/>
                         <label htmlFor="">User Name :</label>
-                        <input type="text" name="" id=""/>
+                        <input type="text" onChange={this.onTxtUserNameChange} />
                         <button onClick={this.onBtnGreetClick}>Greet</button>
                         <div className="highlight">{this.state.message}</div>
                     </div>
@@ -47,7 +52,11 @@
         }
 
         ReactDOM.render(
-            <Greeter/>, 
+            <div>
+                <Greeter/>
+                <Greeter/>
+            </div>
+            , 
             document.getElementById('root')
         )
     </script>
