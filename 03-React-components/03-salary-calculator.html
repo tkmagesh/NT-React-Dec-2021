@@ -22,6 +22,12 @@
             font-size: 18pt;
             padding-right: 10px;
         }
+        .goodSalary{
+            color : green;
+        }
+        .poorSalary{
+            color : red;
+        }
     </style>
     <script type="text/babel">
         class SalaryCalculatorModel {
@@ -118,7 +124,7 @@
                                         <td>{data.hra}</td>
                                         <td>{data.da}</td>
                                         <td>{data.tax}</td>
-                                        <td>{data.salary}</td>
+                                        {data.salary !== 0 ? (<td className={data.salary >= 10000 ? 'goodSalary' : 'poorSalary'} >{data.salary}</td>) : null }
                                     </tr>
                                 </tbody>
                             </table>
