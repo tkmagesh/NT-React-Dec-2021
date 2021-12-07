@@ -79,3 +79,41 @@ HTML & JSX
         1. Every open tag must have the correstponding close tag
         2. Use 'htmlFor' in place of 'for' attribute
         3. Use 'className' in place of 'class' attribute
+
+
+ES6 (ECMAScript6 / ES2015 / ESNext)
+    1. let
+    2. const
+    3. array destructuring
+    4. rest operator (array)
+    5. spread operator (array)
+    6. object destructuring
+    7. rest operator (object)
+    8. spread operator (object)
+    9. default parameters
+    10. arrow functions
+    11. template strings
+    12. iterators
+
+
+Custom Iterator
+    var genFibNos = {
+        [Symbol.iterator]() {
+            let pre = 0, cur = 1;
+            return {
+                next(){
+                    [pre, cur] = [cur, pre + cur];
+                    return { done : false, value : cur }
+                }
+            }
+        }
+    }
+
+
+
+Assignment
+    Array Methods
+        - map
+        - reduce
+        - filter
+        - forEach
