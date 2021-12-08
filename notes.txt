@@ -269,3 +269,23 @@ State Manager
         An object that will have instrutions for the state change
         contention => { type : 'UNIQUE ACTION TYPE', (optional) payload : 'DATA' }
        
+
+State Manager (trial)
+================================================================
+var inc_action = { type : 'INCREMENT' },
+    dec_action = { type : 'DECREMENT' };
+
+function spinnerReducer(currentState = 100, action){
+    //action is dispatched
+    if (action.type === 'INCREMENT') return currentState + 1;
+    if (action.type === 'DECREMENT') return currentState - 1;
+    return currentState;
+}
+
+var store = StateManager.createStore(spinnerReducer);
+
+store.subscribe(() => console.log(`store state changed to ${store.getState()}`))
+
+store.dispatch(inc_action)
+
+store.dispatch(dec_action)
