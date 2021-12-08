@@ -9,35 +9,32 @@
     <script src="react-dom.development.js"></script>
     <script src="babel.min.js"></script>
     <script type="text/babel">
-        const Greeter = () => {
-            /* 
-            const hookArr = React.useState('[Default greet message]')
-            const msg = hookArr[0];
-            const setMsg = hookArr[1]; 
-            */
+        const Greeter = ({ msgTemplate }) => {
 
             const [msg, setMsg] = React.useState('[Default greet message]');
-            const [data, setData] = React.useState(100);
+            const [userName, setUserName] = React.useState('');
 
             const onBtnGreetClick = () => {
-                setMsg('greet button clicked');
-                setData(200);
+                const greetMsg = `Hi ${userName}, ${msgTemplate}`
+                setMsg(greetMsg);
             };
             return (
                 <div>
                     <h1>Greeter</h1>
                     <hr />
                     <label htmlFor="">User Name :</label>
-                    <input type="text"/>
+                    <input type="text" onChange={ evt => setUserName(evt.target.value)}/>
                     <button onClick={onBtnGreetClick}>Greet</button>
                     <div className="highlight">{msg}</div>
-                    <div>{data}</div>
                 </div>
             )
         }
         
         ReactDOM.render(
-            <Greeter/>
+            <div>
+                <Greeter msgTemplate="Have a nice day!"/>
+                <Greeter msgTemplate="Have a good day!" />
+            </div>
             , document.getElementById('root')
         )
     </script>
