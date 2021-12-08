@@ -110,20 +110,29 @@
                             <button onClick={ () => model.calculate() }>Calculate</button>
                         </div>
                         {/* SalaryCalculatorResult */}
-                        <div className="field">
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>{data.basic}</td>
-                                        <td>{data.hra}</td>
-                                        <td>{data.da}</td>
-                                        <td>{data.tax}</td>
-                                        <td>{data.salary}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        <SalaryCalculatorResult data={data} />
                     </section>
+                )
+            }
+        }
+
+        class SalaryCalculatorResult extends React.Component{
+            render(){
+                const { data } = this.props;
+                const resultCols = [];
+                for (let attrName in data){
+                    resultCols.push(<td key={attrName}>{data[attrName]}</td>)
+                }
+                return(
+                    <div className="field">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    {resultCols}
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 )
             }
         }
