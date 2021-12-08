@@ -9,10 +9,11 @@
     <script src="react.development.js"></script>
     <script src="react-dom.development.js"></script>
     <script src="babel.min.js"></script>
+    <!-- 
+        01. initial implementation
+
+     -->
     <script type="text/babel">
-        
-        var inc_action = { type: 'INCREMENT' },
-            dec_action = { type: 'DECREMENT' };
 
         function spinnerReducer(currentState = 100, action) {
             //action is dispatched
@@ -23,22 +24,38 @@
 
         var store = StateManager.createStore(spinnerReducer);
 
-       
+        const Spinner = ({store}) => {
+            const inc_action = { type: 'INCREMENT' },
+                dec_action = { type: 'DECREMENT' };
 
+            const onBtnDecrementClick = () => {
+                store.dispatch(dec_action)
+            };
 
-        const Spinner = () => {
+            const onBtnnIncrementClick = () => {
+                store.dispatch(inc_action);
+            };
+
+            const value = store.getState();
             return(
                 <>
                     <h1>Spinner</h1>
                     <hr />
-                    <button>Decrement</button>
-                    <span> [0] </span>
-                    <button>Increment</button>
+                    <button onClick={onBtnDecrementClick}>Decrement</button>
+                    <span> [{value}] </span>
+                    <button onClick={onBtnnIncrementClick}>Increment</button>
                 </>
             )
         }
 
-        ReactDOM.render(<Spinner/>, document.getElementById('root'))
+        function renderSpinner(){
+            ReactDOM.render(
+                <Spinner store={store}/>, 
+                document.getElementById('root')
+            )
+        }
+        renderSpinner();
+        store.subscribe(renderSpinner)
 
     </script>
 </head>
