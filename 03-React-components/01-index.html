@@ -35,8 +35,33 @@
                 this.setState({ userName : evt.target.value })
             }
 
+            //lifecycle events
+            /* 
+            componentWillMount(){
+                console.log('componentWillMount triggered')
+            }
+
+            componentDidMount(){
+                console.log('componentDidMount triggered')
+            }
+
+            shouldComponentUpdate(){
+                console.log('shouldComponentUpdate triggered')
+                return true;
+            }
+
+            componentDidUpdate(){
+                console.log('componentDidUpdate triggered')
+            }
+
+            componentWillUnmount(){
+                console.log('componentWillUnmount triggered')
+            } 
+            */
+           
             //presentation
             render(){
+                console.log('render triggered')
                 return(
                     <div>
                         <h1>Greeter</h1>
@@ -53,7 +78,6 @@
         ReactDOM.render(
             <div>
                 <Greeter msgTemplate="Have a good day!"/>
-                <Greeter msgTemplate="Have a nice day!"/>
             </div>
             , 
             document.getElementById('root')

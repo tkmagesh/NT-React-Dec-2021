@@ -226,7 +226,12 @@ React hooks
         useState
             used to manage the state in a functional component
         useEffect
+            used to handle life cycle events in functional component
         useContext
         useCallback
         useMemo
         useReducer
+
+Advantages of Functional Components
+    1. No need to create component instances
+    2. unnecessary life cycle events will not be executed
