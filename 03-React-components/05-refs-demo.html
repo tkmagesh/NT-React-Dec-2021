@@ -13,7 +13,7 @@
        class Greeter extends React.Component {
             
             txtUserNameRef = React.createRef();
-
+            
             //state
             state = {
                 message: '[Default greet message]'
@@ -36,7 +36,7 @@
                         <hr />
                         <label htmlFor="">User Name :</label>
                         <input type="text" ref={this.txtUserNameRef} />
-                        <button onClick={this.onBtnGreetClick}>Greet</button>
+                        <button onClick={this.onBtnGreetClick} ref={this.buttonRef}>Greet</button>
                         <div className="highlight">{this.state.message}</div>
                     </div>
                 )
