@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functional Components</title>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <script type="text/babel">
+       /* 
+       class MyComponent extends React.Component{
+            render(){
+                return <h1>{this.props.text}</h1>;
+            }
+        } 
+        */
+
+        /* 
+        function MyComponent(){
+            return <h1>My Functional Component</h1>;
+        } 
+        */
+
+       /* 
+        const MyComponent = () => {
+            return <h1>My Functional Component</h1>;
+        }; 
+        */
+
+        /* 
+        const MyComponent = (props) => {
+            return <h1>{props.text}</h1>;
+        }; 
+        */
+
+        /* 
+        const MyComponent = ({text}) => {
+            return <h1>{text}</h1>;
+        }; 
+        */
+
+
+        /* const MyComponent = () => (<h1>My Functional Component</h1>) */
+        /* const MyComponent = (props) => (<h1>{props.text}</h1>) */
+
+        const MyComponent = ({text}) => (<h1>{text}</h1>);
+        
+        ReactDOM.render(
+            <MyComponent text="First Functional Component"/>
+            , document.getElementById('root')
+        )
+    </script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+</html>
