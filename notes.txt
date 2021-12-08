@@ -217,3 +217,16 @@ Calculator-2
 
 Assignment
 Build the salary calculator using react
+
+React hooks
+    functions used to handle side-effects in functional components
+    hook functions can be used ONLY in functional components
+    hook function name must start with 'use'
+    Built in hooks
+        useState
+            used to manage the state in a functional component
+        useEffect
+        useContext
+        useCallback
+        useMemo
+        useReducer
