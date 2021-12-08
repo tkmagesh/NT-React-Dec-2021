@@ -34,6 +34,7 @@
             onBtnRemoveClick = (productName) => {
                 const { productNames } = this.state,
                     updatedProductNames = productNames.filter(pn => pn !== productName);
+                    
                 this.setState({productNames : updatedProductNames})
             }
             render(){
