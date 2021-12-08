@@ -235,3 +235,37 @@ React hooks
 Advantages of Functional Components
     1. No need to create component instances
     2. unnecessary life cycle events will not be executed
+
+State
+    UI State
+        Any data that supports the 'presentational' needs of the component
+        It is hightly UNLIKELY that this data is needed outside its component
+        Feel free to maintain this in the component state
+
+    Application State
+        Any data that supports the core business logic of the applications
+        It is highly LIKELY that this data is needed through out the application
+        DO NOT maintain this data in the component state
+
+State Manager
+    1. Store
+        All the application state for the WHOLE application is maintained in this single store
+        NOT a persistent store
+        This acts as a 'single source of truth' for the application
+        APIs
+            getState()
+            subscribe(fn)
+            dispatch(action)
+
+    2. Reducer
+        A function that encapsulates the 'state change' logic
+        It should be a pure function
+            immutable state
+            should not interact with any other entity
+            NO side effects
+        It should return 'new state' if the state is changed or 'current state' as it is.
+
+    3. Action
+        An object that will have instrutions for the state change
+        contention => { type : 'UNIQUE ACTION TYPE', (optional) payload : 'DATA' }
+       

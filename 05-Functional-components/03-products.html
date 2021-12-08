@@ -17,18 +17,21 @@
         }
     </style>
     <script type="text/babel">
-        const Products = () => {
+        const Products = ({onListChanged}) => {
             const [newProductName, setNewProductName]= React.useState('');
             const [productNames, setProductNames] = React.useState([]);
 
             const onBtnAddNewClick = () => {
-                setProductNames([...productNames, newProductName])
+                const updatedProductNames = [...productNames, newProductName]
+                setProductNames(updatedProductNames)
                 setNewProductName('');
+                onListChanged(updatedProductNames);
             };
 
             const onBtnRemoveClick = (productName) => {
                 const updatedProductNames = productNames.filter(pn => pn !== productName);
                 setProductNames(updatedProductNames);
+                onListChanged(updatedProductNames);
             };
 
             const productItems = productNames.map((productName, idx) => (
@@ -39,6 +42,8 @@
                     </div>
                 </li>
             ))
+
+           
             return (
                 <>
                     <h3>Products List</h3>
@@ -54,17 +59,35 @@
                 </>
             )
         }
-        ReactDOM.render(<Products/>, document.getElementById('root'))
+
+        const ProductsCount = ({data}) => {
+            return (
+                <div>
+                    <h3>Stats</h3>
+                    <span>Products # : </span>
+                    <span>{data}</span>
+                </div>
+            )
+        }
+
+         const App = () => {
+            const [list, setList] = React.useState([]);
+                return (
+                    <div>
+                        <ProductsCount data={list.length}/>
+                        <Products onListChanged={ list => setList(list)} />
+                    </div>
+                )
+            }
+        ReactDOM.render(
+            <App/>
+            , document.getElementById('root'))
     </script>
 </head>
 <body>
     <h1>Products</h1>
     <hr />
-    <div>
-        <h3>Stats</h3>
-        <span>Products # : </span>
-        <span>3</span>
-    </div>
+    
     <div id="root">
         
     </div>
