@@ -106,9 +106,43 @@
         const store = Redux.createStore(bugsReducer);
         const bugActionDispatchers = Redux.bindActionCreators(bugActionCreators, store.dispatch);
 
-        const Bugs = ({bugs, addNew, remove, toggle, removeClosed}) => {
-            const [newBugName, setNewBugName] = React.useState('');
+        const BugStats = ({bugs}) => {
             const closedCount = bugs.reduce((result, bug) => bug.isClosed ? result + 1 : result, 0);
+            return(
+                 <section className="stats">
+                    <span className="closed">{closedCount}</span>
+                    <span> / </span>
+                    <span>{bugs.length}</span>
+                </section>
+            )
+        };
+
+        const BugSort = () => (
+             <section className="sort">
+                <label htmlFor="">Order By :</label>
+                <select name="" id="">
+                    <option value=""></option>
+                    <option value=""></option>
+                </select>
+                <label htmlFor="">Descending ? :</label>
+                <input type="checkbox" name="" id="" />
+            </section>
+        );
+
+        const BugEdit = ({addNew}) => {
+            const [newBugName, setNewBugName] = React.useState('');
+            return (
+                <section className="edit">
+                    <label htmlFor="">Bug Name :</label>
+                    <input type="text" onChange={evt => setNewBugName(evt.target.value)} />
+                    <button onClick={() => addNew(newBugName)}>Add New</button>
+                </section>
+            )
+        }
+
+        const Bugs = ({bugs, addNew, remove, toggle, removeClosed}) => {
+            
+            
             const bugItems = bugs.map(bug => (
                 
                 <li key={bug.id}> {/* BugItem */}
@@ -127,28 +161,13 @@
             return(
                 <>
                     {/* BugStats */}
-                    <section className="stats">
-                        <span className="closed">{closedCount}</span>
-                        <span> / </span>
-                        <span>{bugs.length}</span>
-                    </section>
+                    <BugStats bugs={bugs} />
 
                     {/* BugSort */}
-                    <section className="sort">
-                        <label htmlFor="">Order By :</label>
-                        <select name="" id="">
-                            <option value=""></option>
-                            <option value=""></option>
-                        </select>
-                        <label htmlFor="">Descending ? :</label>
-                        <input type="checkbox" name="" id="" />
-                    </section>
+                    <BugSort/>
+
                     {/* BugEdit */}
-                    <section className="edit">
-                        <label htmlFor="">Bug Name :</label>
-                        <input type="text" onChange={ evt => setNewBugName(evt.target.value)}  />
-                        <button onClick={() => addNew(newBugName)}>Add New</button>
-                    </section>
+                    
 
                     {/* BugList */}
                     <section className="list">
