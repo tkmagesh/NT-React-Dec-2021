@@ -289,3 +289,17 @@ store.subscribe(() => console.log(`store state changed to ${store.getState()}`))
 store.dispatch(inc_action)
 
 store.dispatch(dec_action)
+
+Assignment
+Build the following using 'state manager'
+
+<h1>Calculator-1</h1>
+<hr>
+<input type="number" name="" id="">
+<input type="number" name="" id="">
+<br>
+<button>Add</button>
+<button>Subtract</button>
+<button>Multiply</button>
+<button>Divide</button>
+<div>[Result]</div>
