@@ -306,3 +306,18 @@ Build the following using 'state manager'
 
 Assignment
 Implement the 'Products' problem using StateManager
+
+Yarn
+    An alternative package manager for node.js (or any javascript application)
+    To install yarn
+        npm install -g yarn
+
+
+To configure the NPM proxy for NorthernTrust
+    https://nt-docs.apps.system.pcf.ntrs.com/cdd-docs/ui/environment-setup/windows/
+
+    
+To setup a react application
+    tool => create-react-app
+
+    yarn create react-app bug-tracker-app
