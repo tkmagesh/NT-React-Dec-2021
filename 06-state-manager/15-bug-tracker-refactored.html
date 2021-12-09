@@ -49,7 +49,7 @@
             (done) 4. Toggle the 'closed' status of any bug
             (done) 5. Remove all 'closed' bugs
             (done) 6. Display stats (# of closed bugs / total # of bugs)
-            7. Refactor the "Bugs" component 
+            (done) 7. Refactor the "Bugs" component 
             X. Organize the solution into a proper application setup
             8. Sort the bugs (assignment)
             9. Associate the bugs with projects
@@ -138,52 +138,47 @@
                     <button onClick={() => addNew(newBugName)}>Add New</button>
                 </section>
             )
-        }
+        };
 
-        const Bugs = ({bugs, addNew, remove, toggle, removeClosed}) => {
-            
-            
-            const bugItems = bugs.map(bug => (
-                
-                <li key={bug.id}> {/* BugItem */}
-                    <span 
-                        className={"bugname " + (bug.isClosed ? 'closed' : '')} 
-                        onClick={ () => toggle(bug)}
+        const BugItem = ({bug, toggle, remove}) => {
+            return (
+                <li> 
+                    <span
+                        className={"bugname " + (bug.isClosed ? 'closed' : '')}
+                        onClick={() => toggle(bug)}
                     >
                         {bug.name}
                     </span>
-                    {/* <div>{bug.isClosed.toString()}</div> */}
                     <div className="datetime">{bug.createdAt.toString()}</div>
                     <button onClick={() => remove(bug)} >Remove</button>
                 </li>
-            ));
+            )
+        };
 
+        const BugList = ({bugs, removeClosed, toggle, remove}) => {
+            const bugItems = bugs.map(bug => (
+                <BugItem key={bug.id} {...{bug, toggle, remove}} />
+            ));
+            return (
+                <section className="list">
+                    <ol>
+                        {bugItems}
+                    </ol>
+                    <button onClick={() => removeClosed(bugs)}>Remove Closed</button>
+                </section>
+            )
+        };
+
+        const Bugs = ({bugs, addNew, remove, toggle, removeClosed}) => {
             return(
                 <>
-                    {/* BugStats */}
                     <BugStats bugs={bugs} />
-
-                    {/* BugSort */}
                     <BugSort/>
-
-                    {/* BugEdit */}
-                    
-
-                    {/* BugList */}
-                    <section className="list">
-                        <ol>
-                            {bugItems}
-                            {/* <li>
-                                <span className="bugname closed">[Bug - 2]</span>
-                                <div className="datetime">[Created At]</div>
-                                <button>Remove</button>
-                            </li> */}
-                        </ol>
-                        <button onClick={() => removeClosed(bugs)}>Remove Closed</button>
-                    </section>
+                    <BugEdit addNew={addNew} />
+                    <BugList {...{bugs, toggle, remove, removeClosed}} />
                 </>
             )
-        }
+        };
 
         function renderApp(){
             const bugs = store.getState();
