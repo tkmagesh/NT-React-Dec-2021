@@ -303,3 +303,6 @@ Build the following using 'state manager'
 <button>Multiply</button>
 <button>Divide</button>
 <div>[Result]</div>
+
+Assignment
+Implement the 'Products' problem using StateManager
