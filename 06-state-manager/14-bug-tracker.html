@@ -45,7 +45,7 @@
         Use Cases:
             (done) 1. Add new bugs
             (done) 2. List the added bugs
-            3. Remove any bug
+            (done) 3. Remove any bug
             4. Toggle the 'closed' status of any bug
             5. Remove all 'closed' bugs
             6. Display stats (# of closed bugs / total # of bugs)
@@ -61,6 +61,8 @@
             switch (action.type){
                 case 'BUGS_ADD':
                     return [...currentState, action.payload];
+                case 'BUGS_REMOVE':
+                    return currentState.filter(bug => bug.id !== action.payload.id)
                 default: 
                     return currentState;
             }
@@ -80,20 +82,24 @@
                 };
                 const action = { type : 'BUGS_ADD', payload : newBug };
                 return action;
+            },
+            remove(bugToRemove){
+                const action = { type: 'BUGS_REMOVE', payload : bugToRemove };
+                return action;
             }
         }
 
         const store = Redux.createStore(bugsReducer);
         const bugActionDispatchers = Redux.bindActionCreators(bugActionCreators, store.dispatch);
 
-        const Bugs = ({bugs, addNew}) => {
+        const Bugs = ({bugs, addNew, remove}) => {
             const [newBugName, setNewBugName] = React.useState('');
 
             const bugItems = bugs.map(bug => (
                 <li key={bug.id}>
                     <span className="bugname">{bug.name}</span>
                     <div className="datetime">{bug.createdAt.toString()}</div>
-                    <button>Remove</button>
+                    <button onClick={() => remove(bug)} >Remove</button>
                 </li>
             ));
 
