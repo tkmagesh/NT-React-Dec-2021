@@ -46,14 +46,15 @@
             (done) 1. Add new bugs
             (done) 2. List the added bugs
             (done) 3. Remove any bug
-            4. Toggle the 'closed' status of any bug
-            5. Remove all 'closed' bugs
-            6. Display stats (# of closed bugs / total # of bugs)
+            (done) 4. Toggle the 'closed' status of any bug
+            (done) 5. Remove all 'closed' bugs
+            (done) 6. Display stats (# of closed bugs / total # of bugs)
+            7. Refactor the "Bugs" component 
             X. Organize the solution into a proper application setup
-            7. Sort the bugs (assignment)
-            8. Associate the bugs with projects
-            9. Persist the bugs in the server
-            10. package & deployment
+            8. Sort the bugs (assignment)
+            9. Associate the bugs with projects
+            10. Persist the bugs in the server
+            11. package & deployment
      -->
     <script type="text/babel">
 
@@ -62,7 +63,10 @@
                 case 'BUGS_ADD':
                     return [...currentState, action.payload];
                 case 'BUGS_REMOVE':
-                    return currentState.filter(bug => bug.id !== action.payload.id)
+                    const bugsToRemove = action.payload;
+                    return currentState.filter(bug => !bugsToRemove.find(b => b.id === bug.id))
+                case 'BUGS_REPLACE':
+                    return currentState.map(bug => bug.id === action.payload.id ? action.payload : bug)
                 default: 
                     return currentState;
             }
@@ -84,7 +88,17 @@
                 return action;
             },
             remove(bugToRemove){
-                const action = { type: 'BUGS_REMOVE', payload : bugToRemove };
+                const action = { type: 'BUGS_REMOVE', payload : [bugToRemove] };
+                return action;
+            },
+            toggle(bugToToggle){
+                const toggledBug = { ...bugToToggle, isClosed : !bugToToggle.isClosed };
+                const action = { type : 'BUGS_REPLACE', payload : toggledBug };
+                return action;
+            },
+            removeClosed(bugs /* TO BE FIXED */){
+                const bugsToRemove = bugs.filter(bug => bug.isClosed);
+                const action = { type : 'BUGS_REMOVE', payload : bugsToRemove };
                 return action;
             }
         }
@@ -92,12 +106,18 @@
         const store = Redux.createStore(bugsReducer);
         const bugActionDispatchers = Redux.bindActionCreators(bugActionCreators, store.dispatch);
 
-        const Bugs = ({bugs, addNew, remove}) => {
+        const Bugs = ({bugs, addNew, remove, toggle, removeClosed}) => {
             const [newBugName, setNewBugName] = React.useState('');
-
+            const closedCount = bugs.reduce((result, bug) => bug.isClosed ? result + 1 : result, 0);
             const bugItems = bugs.map(bug => (
                 <li key={bug.id}>
-                    <span className="bugname">{bug.name}</span>
+                    <span 
+                        className={"bugname " + (bug.isClosed ? 'closed' : '')} 
+                        onClick={ () => toggle(bug)}
+                    >
+                        {bug.name}
+                    </span>
+                    {/* <div>{bug.isClosed.toString()}</div> */}
                     <div className="datetime">{bug.createdAt.toString()}</div>
                     <button onClick={() => remove(bug)} >Remove</button>
                 </li>
@@ -106,7 +126,7 @@
             return(
                 <>
                     <section className="stats">
-                        <span className="closed">1</span>
+                        <span className="closed">{closedCount}</span>
                         <span> / </span>
                         <span>{bugs.length}</span>
                     </section>
@@ -133,7 +153,7 @@
                                 <button>Remove</button>
                             </li> */}
                         </ol>
-                        <button>Remove Closed</button>
+                        <button onClick={() => removeClosed(bugs)}>Remove Closed</button>
                     </section>
                 </>
             )
