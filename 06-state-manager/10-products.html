@@ -53,15 +53,11 @@
                 setNewProductName('');
             };
 
-            const onBtnRemoveClick = (productName) => {
-                remove(productName);
-            };
-
             const productItems = productNames.map((productName, idx) => (
                 <li key={idx}>
                     <div>
                         <span>{productName}</span>
-                        <span> <button onClick={() => onBtnRemoveClick(productName)}> X </button> </span>
+                        <span> <button onClick={() => remove(productName)}> X </button> </span>
                     </div>
                 </li>
             ))
@@ -92,7 +88,7 @@
                 </div>
             )
         }
-        
+
         function renderApp(){
             const productNames = store.getState();
             ReactDOM.render(
