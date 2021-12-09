@@ -321,3 +321,34 @@ To setup a react application
     tool => create-react-app
 
     yarn create react-app bug-tracker-app
+
+ES6 modules
+    - Everything defined in a JS/JSX file is considered as 'private' to that file by default
+    - Entities that are public have to be explicitly exported
+    - Any public entity from another file has to be explicitly imported to use.
+
+
+bug tracker app organization
+    src
+        /bugs
+            /actions
+                addNew.js
+                toggle.js
+                remove.js
+                removeClosed.js
+                index.js  
+            /components
+                BugItem.js
+                BugList.js
+                BugEdit.js
+                BugStats.js 
+            /reducers
+                bugsReducer.js
+            index.js (Bugs Component)
+            index.css (styles for Bugs component)
+        /store
+            index.js (creating the store)
+        index.js
+
+to install redux
+    yarn add redux
