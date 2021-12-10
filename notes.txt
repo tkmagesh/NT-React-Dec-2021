@@ -352,3 +352,23 @@ bug tracker app organization
 
 to install redux
     yarn add redux
+
+
+Container Component / Smart Component
+    - responsible for interfacing with the redux 
+    - will not have any UI responsibility
+    - As few containers as possible is advisable
+
+Presentation component / Dumb Component
+    - responsible for User Interaction
+    - Will receive the data & action dispatchers from container component
+
+react-redux
+    hooks
+        useSelector => to access the store state
+        useDispatch => dispatch
+
+    Provider
+        - responsible for providing the store to the application
+        
+        

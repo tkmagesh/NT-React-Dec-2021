@@ -3,15 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 import reportWebVitals from './reportWebVitals';
-import { bindActionCreators } from 'redux';
+import { Provider } from 'react-redux';
+
+/* import { bindActionCreators } from 'redux';
 import * as bugActionCreators from './bugs/actions';
-import * as projectActionCreators from './projects/actions';
+import * as projectActionCreators from './projects/actions'; */
 
 import store from './store';
 import Bugs from './bugs';
 import Projects from './projects';
 
-const bugActionDispatchers = bindActionCreators(bugActionCreators, store.dispatch);
+/* const bugActionDispatchers = bindActionCreators(bugActionCreators, store.dispatch);
 const projectActionDispatchers = bindActionCreators(projectActionCreators, store.dispatch);
 
 function renderApp(){
@@ -23,12 +25,24 @@ function renderApp(){
     ReactDOM.render(
         <div>
             <Projects projects={projects} {...projectActionDispatchers} />
-             <Bugs bugs={bugs} {...bugActionDispatchers} /> 
+            <Bugs bugs={bugs} {...bugActionDispatchers} /> 
         </div>,
         document.getElementById('root'))
-}
-renderApp()
-store.subscribe(renderApp);
+} */
+
+
+
+ReactDOM.render(
+    <Provider store={store}>
+        <div>
+            <Projects/>
+            <Bugs/> 
+        </div>
+    </Provider>,
+    document.getElementById('root')
+);
+
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

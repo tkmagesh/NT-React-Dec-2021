@@ -1,4 +1,8 @@
-const Projects = ({projects}) => {
+import * as projectActionCreators from './actions';
+import { useDispatch, useSelector } from 'react-redux';
+const Projects = () => {
+    const projects = useSelector(storeState => storeState.projectsState);
+
     return (
         <div className="projects">
         <h3>Projects</h3>
