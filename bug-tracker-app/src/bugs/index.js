@@ -10,23 +10,19 @@ import './index.css';
 import * as bugActionCreators from './actions';
 
 const Bugs = () => {
-    /* 
-    const storeState = useSelector(function(storeState){
-        return storeState;
-    }),
-        bugs = storeState.bugsState; 
-    */
+   
+    const { bugs, projects } = useSelector(({bugsState : bugs, projectsState : projects}) => ({bugs, projects}));
 
-    const bugs = useSelector(storeState => storeState.bugsState);
     const dispatch = useDispatch();
     const { addNew, toggle, remove, removeClosed } = bindActionCreators(bugActionCreators, dispatch);
+    const bugsWithProjects = bugs.map(bug => ({...bug, projectName: projects.find(project => project.id === bug.projectId).name}));
     return(
         <>
             <h3>Bugs</h3>
-            <BugStats bugs={bugs} />
+            <BugStats bugs={bugsWithProjects} />
             <BugSort/>
-            <BugEdit addNew={addNew} />
-            <BugList {...{bugs, toggle, remove, removeClosed}} />
+            <BugEdit addNew={addNew} projects={projects} />
+            <BugList {...{bugs : bugsWithProjects, toggle, remove, removeClosed}} />
         </>
     )
 };
