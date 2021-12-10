@@ -12,10 +12,11 @@ import {bugsSelector} from './selectors';
 
 const Bugs = () => {
     const { bugs, projects } = useSelector(bugsSelector);
-    const { addNew, toggle, remove, removeClosed } = bindActionCreators(bugActionCreators, useDispatch());
+    const { addNew, toggle, remove, removeClosed, load } = bindActionCreators(bugActionCreators, useDispatch());
     return(
         <>
             <h3>Bugs</h3>
+            <button onClick={load}>Load Bugs</button>
             <BugStats bugs={bugs} />
             <BugSort/>
             <BugEdit addNew={addNew} projects={projects} />

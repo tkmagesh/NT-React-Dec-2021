@@ -7,6 +7,8 @@ function bugsReducer(currentState=[], action){
             return currentState.filter(bug => !bugsToRemove.find(b => b.id === bug.id))
         case 'BUGS_REPLACE':
             return currentState.map(bug => bug.id === action.payload.id ? action.payload : bug)
+        case 'BUGS_INIT': 
+            return action.payload;
         default: 
             return currentState;
     }

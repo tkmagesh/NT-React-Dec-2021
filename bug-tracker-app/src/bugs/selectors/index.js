@@ -4,6 +4,8 @@ export const bugsSelector = storeState => {
         projectsState = storeState.projectsState,
         projects = projectsState.list,
         selectedProject = projectsState.selectedProject;
+
+        console.log(bugs, projects)
         if (selectedProject) {
             bugs = bugs.filter(bug => bug.projectId === selectedProject.id);
         }

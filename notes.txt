@@ -458,3 +458,11 @@ Updating a bug
 
 Deleting a bug
     var response = await axios.delete('http://localhost:3030/bugs/5')
+
+Async Actions
+    redux-thunk
+    redux-saga
+    redux-observable
+
+To install redux-saga
+    yarn add redux-saga

@@ -1,6 +1,10 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import bugsReducer from "../bugs/reducers/bugsReducer";
 import projectsReducer from "../projects/reducers/projectsReducer";
+import logger from 'redux-logger';
+
+import createSagaMiddleware from 'redux-saga';
+import loadBugsSaga from '../bugs/sagas/loadBugsSaga';
 
 const rootReducer = combineReducers({
     projectsState : projectsReducer,
@@ -22,6 +26,7 @@ function loggerMiddleware(store){
 } 
 */
 
+/* 
 const loggerMiddleware = store => next => action => {
     console.group(action.type);
     console.log('%c prev state', 'color: yellow', store.getState());
@@ -29,15 +34,15 @@ const loggerMiddleware = store => next => action => {
     next(action);
     console.log('%c next state', 'color: green', store.getState()); 
     console.groupEnd();
-};
+}; 
+*/
 
 
-const dummyMiddleware = store => next => action => {
-    console.log('dummyMiddleware');
-    next(action);
-}
-        
 
-const store = createStore(rootReducer, applyMiddleware(loggerMiddleware, dummyMiddleware));
+const sagaMiddleware = createSagaMiddleware();       
+
+const store = createStore(rootReducer, applyMiddleware(logger, sagaMiddleware));
+
+sagaMiddleware.run(loadBugsSaga)
 
 export default store;
