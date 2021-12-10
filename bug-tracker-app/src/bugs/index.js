@@ -11,11 +11,16 @@ import * as bugActionCreators from './actions';
 
 const Bugs = () => {
    
-    const { bugs, projects } = useSelector(({bugsState : bugs, projectsState : projects}) => ({bugs, projects}));
+    const { bugs, projects, selectedProject } = useSelector(({bugsState : bugs, projectsState : projects}) => ({bugs, projects : projects.list, selectedProject : projects.selectedProject}));
+
+    console.log(selectedProject);
 
     const dispatch = useDispatch();
     const { addNew, toggle, remove, removeClosed } = bindActionCreators(bugActionCreators, dispatch);
-    const bugsWithProjects = bugs.map(bug => ({...bug, projectName: projects.find(project => project.id === bug.projectId).name}));
+    
+    const bugsWithProjects = (selectedProject ? bugs.filter(bug => bug.projectId === selectedProject.id) : bugs )
+        .map(bug => ({...bug, projectName: projects.find(project => project.id === bug.projectId).name}));
+    
     return(
         <>
             <h3>Bugs</h3>

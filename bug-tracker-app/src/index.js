@@ -34,9 +34,13 @@ function renderApp(){
 
 ReactDOM.render(
     <Provider store={store}>
-        <div>
-            <Projects/>
-            <Bugs/> 
+        <div className="row">
+            <div className="projects">
+                <Projects/>
+            </div>
+            <div className="bugs">
+                <Bugs/> 
+            </div>
         </div>
     </Provider>,
     document.getElementById('root')

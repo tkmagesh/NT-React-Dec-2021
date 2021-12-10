@@ -5,3 +5,10 @@ export function addProject(projectName){
         payload: {id : ++_currentProjectId, name: projectName}
     }
 }
+
+export function selectProject(project){
+    return {
+        type: 'SELECT_PROJECT',
+        payload: project
+    }
+}
