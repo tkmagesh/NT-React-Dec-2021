@@ -388,3 +388,12 @@ Async Operations
     
     Promise
         An object designed to HOLD the result of an async operation
+
+        doSomething()
+            .then(doSomethingElse)
+            .then(doSomethingElse)
+
+To use json-server
+    from the folder that has the db.json file
+    npx json-server db.json -p 3030
+
