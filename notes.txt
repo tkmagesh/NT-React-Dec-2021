@@ -397,3 +397,64 @@ To use json-server
     from the folder that has the db.json file
     npx json-server db.json -p 3030
 
+axios
+    To install
+        yarn add axios
+
+var p = axios.get('http://localhost:3030/bugs');
+var p2 = p.then(function(response){
+    return response.data;
+});
+p2.then(function(bugs){
+    console.table(bugs);
+});
+
+OR
+
+axios.get('http://localhost:3030/bugs')
+    .then(function(response){
+        return response.data;
+    })
+    .then(function(bugs){
+        console.table(bugs);
+    });
+
+OR
+
+axios.get('http://localhost:3030/bugs')
+    .then(response => response.data)
+    .then(bugs => console.table(bugs));
+
+
+OR 
+
+var response = await axios.get('http://localhost:3030/bugs')
+var bugs = response.data
+console.table(bugs)
+
+Creating a new bug
+    var newBugData = { 
+        id : 0,
+        name : 'Axios is not working',
+        isClosed : false,
+        createdAt : new Date(),
+        projectId : 1
+    }
+    var response = await axios.post('http://localhost:3030/bugs', newBugData);
+    var newBug = response.data
+    console.log(newBug)
+
+Updating a bug
+    var updatedBugData = { 
+            id : 5,
+            name : 'Axios is stil not working',
+            isClosed : true,
+            createdAt : new Date(),
+            projectId : 1
+        }
+    var response = await axios.put('http://localhost:3030/bugs/5', updatedBugData);
+    var updatedBug = response.data
+    console.log(updatedBug)
+
+Deleting a bug
+    var response = await axios.delete('http://localhost:3030/bugs/5')
