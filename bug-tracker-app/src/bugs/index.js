@@ -8,6 +8,7 @@ import './index.css';
 const Bugs = ({bugs, addNew, remove, toggle, removeClosed}) => {
     return(
         <>
+            <h3>Bugs</h3>
             <BugStats bugs={bugs} />
             <BugSort/>
             <BugEdit addNew={addNew} />
