@@ -9,14 +9,17 @@ import BugList from './components/BugList';
 import './index.css';
 import * as bugActionCreators from './actions';
 import {bugsSelector} from './selectors';
+import { useEffect } from 'react';
 
 const Bugs = () => {
     const { bugs, projects } = useSelector(bugsSelector);
     const { addNew, toggle, remove, removeClosed, load } = bindActionCreators(bugActionCreators, useDispatch());
+    useEffect(() => {
+        load();
+    },[])
     return(
         <>
             <h3>Bugs</h3>
-            <button onClick={load}>Load Bugs</button>
             <BugStats bugs={bugs} />
             <BugSort/>
             <BugEdit addNew={addNew} projects={projects} />

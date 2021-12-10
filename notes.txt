@@ -466,3 +466,17 @@ Async Actions
 
 To install redux-saga
     yarn add redux-saga
+
+
+Using redux dev tools
+    To install
+        yarn add -D redux-devtools-extension
+
+        include the redux-devtools-extension in the store
+
+    Install the browser extension
+        https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd
+
+Realtime updates
+    Server Sent Events
+    WebSockets

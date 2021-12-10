@@ -5,6 +5,7 @@ import logger from 'redux-logger';
 
 import createSagaMiddleware from 'redux-saga';
 import loadBugsSaga from '../bugs/sagas/loadBugsSaga';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 const rootReducer = combineReducers({
     projectsState : projectsReducer,
@@ -41,7 +42,7 @@ const loggerMiddleware = store => next => action => {
 
 const sagaMiddleware = createSagaMiddleware();       
 
-const store = createStore(rootReducer, applyMiddleware(logger, sagaMiddleware));
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(logger, sagaMiddleware)));
 
 sagaMiddleware.run(loadBugsSaga)
 
