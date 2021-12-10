@@ -382,4 +382,9 @@ Assignment
     Display the list of projects in the BugEdit component (projects dropdown)
     The created bug must have the corresponding project id
     Display the 'project name' in the bugItem component
+
+Async Operations
+    An operation that is initiated and not waited for its completion
     
+    Promise
+        An object designed to HOLD the result of an async operation
