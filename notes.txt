@@ -377,4 +377,9 @@ react-redux
         
 Redux middleware
     - used to encapsulate any logic that is common across all the actions
+
+Assignment
+    Display the list of projects in the BugEdit component (projects dropdown)
+    The created bug must have the corresponding project id
+    Display the 'project name' in the bugItem component
     
