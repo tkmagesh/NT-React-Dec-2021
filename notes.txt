@@ -364,6 +364,9 @@ Presentation component / Dumb Component
     - Will receive the data & action dispatchers from container component
 
 react-redux
+    To install
+        yarn add react-redux
+
     hooks
         useSelector => to access the store state
         useDispatch => dispatch
@@ -372,3 +375,6 @@ react-redux
         - responsible for providing the store to the application
         
         
+Redux middleware
+    - used to encapsulate any logic that is common across all the actions
+    
